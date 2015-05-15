@@ -69,10 +69,6 @@ function Engine(deployment) {
   });
 
   this.emitChange();
-
-  const showSignUpSection = Hull.utils.cookies(this.getCookieKey('shown')) !== 'true';
-  const t = this._ship.settings.show_sign_up_section_after;
-  if (showSignUpSection && t > 0) { this.showLater(t, 'signUp'); }
 }
 
 assign(Engine.prototype, EventEmitter.prototype, {
