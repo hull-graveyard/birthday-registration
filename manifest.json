@@ -1,0 +1,22 @@
+{
+  "name": "Shore Project - Birthday Strap Registration",
+  "description": "A simple ship that capture birthday",
+  "picture": "picture.png",
+  "version": "0.0.1",
+  "index": "ship.html",
+  "locales": ["en"],
+  "deployment_settings": [
+    {
+      "name": "like_url",
+      "title": "Like URL",
+      "description": "The absolute URL of the page that will be liked.",
+      "type": "string"
+    }
+  ],
+  "resources": [
+    {
+      "name": "profile_form",
+      "type": "form"
+    }
+  ]
+}
