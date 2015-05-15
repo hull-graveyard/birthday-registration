@@ -18,8 +18,7 @@
     "url": "https://github.com/hull-ships/shore-birthday-registration/issues"
   },
   "scripts": {
-    "start": "./node_modules/.bin/gulp server",
-    "prepublish": "./node_modules/.bin/gulp build"
+    "start": "./node_modules/.bin/gulp server"
   },
   "keywords": [
     "hull",
