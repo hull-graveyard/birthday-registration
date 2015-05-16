@@ -37,7 +37,7 @@ export default React.createClass({
 
   getType() {
     return t.struct({
-      month: t.enums.of(MONTHS),
+      month: t.Num,
       day: t.Num,
       year: t.Num
     });
