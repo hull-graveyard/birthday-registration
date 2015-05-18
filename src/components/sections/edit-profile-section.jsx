@@ -43,7 +43,7 @@ export default React.createClass({
 
   getAsyncActions() {
     return {
-      updateProfile: this.props.updateProfile
+      updateBirthday: this.props.updateBirthday
     };
   },
 
@@ -84,7 +84,7 @@ export default React.createClass({
   },
 
   handleSubmit(value) {
-    this.getAsyncAction('updateProfile')(value);
+    this.getAsyncAction('updateBirthday')(value);
   },
 
   render() {
