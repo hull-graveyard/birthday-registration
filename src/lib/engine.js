@@ -1,8 +1,6 @@
 import assign from 'object-assign';
 import { EventEmitter } from 'events';
 
-import moment from 'moment';
-
 function parseFacebookBirthday(birthday) {
   if (typeof birthday !== 'string') { return {}; }
 
@@ -72,10 +70,6 @@ function Engine(deployment) {
 }
 
 assign(Engine.prototype, EventEmitter.prototype, {
-  getCookieKey(key) {
-    return this._ship.id + key;
-  },
-
   getActions() {
     if (this._actions) { return this._actions; }
 

@@ -22,6 +22,18 @@ const MONTHS = [
   'December'
 ];
 
+const MONTHS_OPTIONS = _.map(MONTHS, (m, i) => {
+  return { value: i + 1, text: translate(m) }
+});
+
+function formatMonth(v) {
+  return v && String(v);
+}
+
+function parseMonth(v) {
+  return parseInt(v, 10);
+}
+
 export default React.createClass({
   displayName: 'LogInSection',
 
@@ -47,10 +59,13 @@ export default React.createClass({
     return {
       month: {
         nullOption: false,
+        factory: t.form.Select,
         value: 1,
-        options: _.map(MONTHS, (m, i) => {
-          return { value: i + 1, text: translate(m) }
-        })
+        options: MONTHS_OPTIONS,
+        transformer: {
+          format: formatMonth,
+          parse: parseMonth
+        }
       },
       day: {
         placeholder: translate('Day'),
