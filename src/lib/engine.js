@@ -277,7 +277,6 @@ assign(Engine.prototype, EventEmitter.prototype, {
   },
 
   formIsSubmitted() {
-    return false;
     return this._form.user_data && !!this._form.user_data.created_at;
   },
 
