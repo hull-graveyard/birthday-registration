@@ -43,7 +43,7 @@ export default React.createClass({
 
   getAsyncActions() {
     return {
-      updateBirthday: this.props.updateBirthday
+      updateProfile: this.props.updateProfile
     };
   },
 
@@ -61,30 +61,32 @@ export default React.createClass({
   getFields() {
     return {
       birthday: {
-        month: {
-          attrs: {
-            className: 'user-birthday-month-field',
+        fields: {
+          month: {
+            attrs: {
+              className: 'user-birthday-month-field',
+            },
+            factory: t.form.Select,
+            nullOption: false,
+            value: 1,
+            options: MONTHS_OPTIONS,
+            transformer: {
+              format: formatMonth,
+              parse: parseMonth
+            }
           },
-          factory: t.form.Select,
-          nullOption: false,
-          value: 1,
-          options: MONTHS_OPTIONS,
-          transformer: {
-            format: formatMonth,
-            parse: parseMonth
+          day: {
+            attrs: {
+              className: 'user-birthday-day-field',
+            },
+            placeholder: translate('Day'),
+          },
+          year: {
+            attrs: {
+              className: 'user-birthday-year-field',
+            },
+            placeholder: translate('Year'),
           }
-        },
-        day: {
-          attrs: {
-            className: 'user-birthday-day-field',
-          },
-          placeholder: translate('Day'),
-        },
-        year: {
-          attrs: {
-            className: 'user-birthday-year-field',
-          },
-          placeholder: translate('Year'),
         }
       },
       location: {
@@ -104,7 +106,7 @@ export default React.createClass({
   },
 
   handleSubmit(value) {
-    this.getAsyncAction('updateBirthday')(value);
+    this.getAsyncAction('updateProfile')(value);
   },
 
   render() {
