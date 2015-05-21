@@ -201,7 +201,7 @@ assign(Engine.prototype, EventEmitter.prototype, {
   fetchFacebookProfile() {
     return Hull.api({ provider: 'facebook', path: 'me' }, { fields: 'birthday,location' }).then((r) => {
       return {
-        location: r.location.name,
+        location: r.location && r.location.name,
         birthday: parseFacebookBirthday(r.birthday)
       };
     })
