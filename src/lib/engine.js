@@ -28,7 +28,7 @@ const SECTIONS = USER_SECTIONS.concat(VISITOR_SECTIONS);
 
 const ACTIONS = [
   'logIn',
-  'updateBirthday',
+  'updateProfile',
 ];
 
 const METHODS = {
@@ -100,7 +100,7 @@ assign(Engine.prototype, EventEmitter.prototype, {
       isLinking: this._isLinking,
       isUnlinking: this._isUnlinking,
       activeSection: this.getActiveSection(),
-      userBirthday: this._userBirthday
+      userProfile: this._userProfile
     };
   },
 
@@ -186,21 +186,24 @@ assign(Engine.prototype, EventEmitter.prototype, {
 
   logIn(providerOrCredentials) {
     return this.perform('login', providerOrCredentials).then((user) => {
-      return this.fetchFacebookBirthday();
-    }).then((b) => {
-      this._userBirthday = b;
+      return this.fetchFacebookProfile();
+    }).then((p) => {
+      this._userProfile = p;
 
-      if (b.month && b.day && b.year) {
-        return this.updateBirthday(b).then(() => this.fetchShip());
+      if (p.location && p.birthday.month && p.birthday.day && p.birthday.year) {
+        return this.updateProfile(p).then(() => this.fetchShip());
       } else {
         return this.fetchShip();
       }
     });
   },
 
-  fetchFacebookBirthday() {
-    return Hull.api({ provider: 'facebook', path: 'me' }).then((r) => {
-      return parseFacebookBirthday(r.birthday);
+  fetchFacebookProfile() {
+    return Hull.api({ provider: 'facebook', path: 'me' }, { fields: 'birthday,location' }).then((r) => {
+      return {
+        location: r.location.name,
+        birthday: parseFacebookBirthday(r.birthday)
+      };
     })
   },
 
@@ -254,9 +257,11 @@ assign(Engine.prototype, EventEmitter.prototype, {
     return promise;
   },
 
-  updateBirthday(birthday) {
+  updateProfile(profile) {
+    const b = profile.birthday;
     const data = {
-      birthday: `${birthday.year}-${birthday.month}-${birthday.day}`
+      location: profile.location,
+      birthday: `${b.year}-${b.month}-${b.day}`
     };
 
     let r = Hull.api(this._form.id + '/submit' ,'put', { data });

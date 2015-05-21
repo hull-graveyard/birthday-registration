@@ -49,29 +49,49 @@ export default React.createClass({
 
   getType() {
     return t.struct({
-      month: t.Num,
-      day: t.Num,
-      year: t.Num
+      birthday: t.struct({
+        month: t.Num,
+        day: t.Num,
+        year: t.Num
+      }),
+      location: t.Str
     });
   },
 
   getFields() {
     return {
-      month: {
-        nullOption: false,
-        factory: t.form.Select,
-        value: 1,
-        options: MONTHS_OPTIONS,
-        transformer: {
-          format: formatMonth,
-          parse: parseMonth
+      birthday: {
+        month: {
+          attrs: {
+            className: 'user-birthday-month-field',
+          },
+          factory: t.form.Select,
+          nullOption: false,
+          value: 1,
+          options: MONTHS_OPTIONS,
+          transformer: {
+            format: formatMonth,
+            parse: parseMonth
+          }
+        },
+        day: {
+          attrs: {
+            className: 'user-birthday-day-field',
+          },
+          placeholder: translate('Day'),
+        },
+        year: {
+          attrs: {
+            className: 'user-birthday-year-field',
+          },
+          placeholder: translate('Year'),
         }
       },
-      day: {
-        placeholder: translate('Day'),
-      },
-      year: {
-        placeholder: translate('Year'),
+      location: {
+        attrs: {
+          className: 'user-location-field',
+        },
+        placeholder: translate('Your location'),
       }
     };
   },
@@ -102,7 +122,7 @@ export default React.createClass({
           <h1>{translate('Just one more step...')}</h1>
         </div>
         <div className='hull-section-content'>
-          <Form type={this.getType()} fields={this.getFields()} value={this.props.userBirthday} submitMessage={button} onSubmit={this.handleSubmit} disabled={disabled} />
+          <Form type={this.getType()} fields={this.getFields()} value={this.props.userProfile} submitMessage={button} onSubmit={this.handleSubmit} disabled={disabled} />
         </div>
       </div>
     );
