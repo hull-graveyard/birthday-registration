@@ -11,8 +11,8 @@ export default React.createClass({
     return (
       <div className='hull-section hull-section-sign-up'>
         <div className='hull-section-header'>
-          <h1>{translate('Birthday Strap Registration')}</h1>
-          <p>{translate('Register with us through Facebook and on your next birthday we will send you a code to order any Shore Project strap for free!')}</p>
+          <h1>{translate('Birthday Registration')}</h1>
+          <p>{translate('Register with us through Facebook and on your next birthday we will send you a gift!')}</p>
         </div>
 
         <div className='hull-section-content'>
@@ -26,4 +26,3 @@ export default React.createClass({
     );
   }
 });
-

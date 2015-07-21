@@ -286,4 +286,3 @@ assign(Engine.prototype, EventEmitter.prototype, {
 });
 
 module.exports = Engine;
-

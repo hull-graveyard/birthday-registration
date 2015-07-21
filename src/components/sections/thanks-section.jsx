@@ -34,8 +34,8 @@ export default React.createClass({
           <h1>{translate('Thanks!')}</h1>
         </div>
         <div className='hull-section-content'>
-          <p>{translate('Hi {name}, your registration is now complete and so we will be in touch again on your birthday so you can choose your free strap.', o)}</p>
-          <p>{translate('In the meantime, please do like us on Facebook so we can keep you up to date with all things Shore Projects.', o)}</p>
+          <p>{translate('Hi {name}, your registration is now complete and so we will be in touch again on your birthday!', o)}</p>
+          <p>{translate('In the meantime, please do like us on Facebook.', o)}</p>
 
           <FacebookLikeButton url={this.props.settings.like_url} />
         </div>
@@ -43,4 +43,3 @@ export default React.createClass({
     );
   }
 });
-

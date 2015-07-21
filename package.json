@@ -1,8 +1,8 @@
 {
-  "name": "shore-birthday-registration",
+  "name": "birthday-registration",
   "description": "A simple ship that capture birthday",
   "version": "0.0.1",
-  "homepage": "https://github.com/hull-ships/shore-birthday-registration",
+  "homepage": "https://github.com/hull-ships/birthday-registration",
   "license": "MIT",
   "main": "dist/ship.js",
   "author": {
@@ -12,10 +12,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/hull-ships/shore-birthday-registration"
+    "url": "git://github.com/hull-ships/birthday-registration"
   },
   "bugs": {
-    "url": "https://github.com/hull-ships/shore-birthday-registration/issues"
+    "url": "https://github.com/hull-ships/birthday-registration/issues"
   },
   "scripts": {
     "start": "./node_modules/.bin/gulp server"
